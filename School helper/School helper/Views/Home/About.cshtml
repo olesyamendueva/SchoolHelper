@@ -1,0 +1,82 @@
+﻿@{
+	ViewData["Title"] = "Генератор схем";
+}
+
+@section Scripts{
+
+	<script type="text/javascript">
+
+
+		function errorCheck(data, status, jqXHR) {
+			// ToDo Мавричев добаавить проверку на наличие переадресации настраницу ошибки во всех аякс запросах
+			if (jqXHR.getResponseHeader('content-type').indexOf('text/html') >= 0) {
+				var error = $(data).find('#errorLabel').text();
+				if (error !== undefined && error !== "") {
+					window.location.href = '/Default/Home/Error?EventCode=' + error;
+				}
+			}
+		}
+
+
+		var ajaxPost = function (query, dataUrl, fnBeforeSend) {
+			return $.ajax({
+				url: dataUrl,
+				type: "POST",
+				contentType: "application/json; charset=utf-8",
+				data: query,
+				success: errorCheck,
+				beforeSend: fnBeforeSend
+			});
+		}
+
+
+		$(document).ready(function () {
+
+			$('#btn_save_form').on('click', function () {
+
+				var text = $('#text_input').val();
+				//alert(text);
+
+				var json = getModelJsonStringify();
+                $.when(ajaxPost(json, "@Url.Action("Save", "Home", new { area = "" })")).then(function (data) {
+					if (data.schema) {
+
+						$("#resultDiv").html(data.schema);
+                        //alert(data.schema);
+                    } else {
+						if (data.errors) {
+							$("#resultDiv").html("<h4 style=\"color: red\">В слове присутствуют некорректные символы<img src=\"/images/sad_smile.jpg\" height=\"70\" width=\"70\" style=\"margin - left: 50px\" /></h4>");
+							//alert("В слове присутствуют неизвестные символы");
+                        }
+                    }
+                });
+
+			});
+
+
+			function getModelJsonStringify() {
+				var arr = {};
+
+				var text = $('#text_input').val();
+				arr.Text = text;
+				return JSON.stringify(arr);
+			}
+
+
+
+
+
+		});
+
+	</script>
+}
+
+<h2>Генератор схем
+	<img src="~/images/robot.jpg" height="100" width="80" style="margin-left:50px" />
+</h2>
+<h3>Введите слово</h3>
+
+<input id="text_input" style="width:400px" />
+<button id="btn_save_form" type="button" class="k-button btn-success">Сформировать</button>
+
+<div id='resultDiv'></div>

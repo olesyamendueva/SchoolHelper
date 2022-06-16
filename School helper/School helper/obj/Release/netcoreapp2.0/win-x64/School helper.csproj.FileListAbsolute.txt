@@ -1,0 +1,14 @@
+C:\Alena\School helper\School helper\bin\Release\netcoreapp2.0\win-x64\hostpolicy.dll
+C:\Alena\School helper\School helper\bin\Release\netcoreapp2.0\win-x64\hostfxr.dll
+C:\Alena\School helper\School helper\bin\Release\netcoreapp2.0\win-x64\School helper.exe
+C:\Alena\School helper\School helper\bin\Release\netcoreapp2.0\win-x64\School helper.deps.json
+C:\Alena\School helper\School helper\bin\Release\netcoreapp2.0\win-x64\School helper.runtimeconfig.json
+C:\Alena\School helper\School helper\bin\Release\netcoreapp2.0\win-x64\School helper.runtimeconfig.dev.json
+C:\Alena\School helper\School helper\bin\Release\netcoreapp2.0\win-x64\School helper.dll
+C:\Alena\School helper\School helper\bin\Release\netcoreapp2.0\win-x64\School helper.pdb
+C:\Alena\School helper\School helper\obj\Release\netcoreapp2.0\win-x64\School helper.csprojAssemblyReference.cache
+C:\Alena\School helper\School helper\obj\Release\netcoreapp2.0\win-x64\School helper.csproj.CoreCompileInputs.cache
+C:\Alena\School helper\School helper\obj\Release\netcoreapp2.0\win-x64\School helper.AssemblyInfoInputs.cache
+C:\Alena\School helper\School helper\obj\Release\netcoreapp2.0\win-x64\School helper.AssemblyInfo.cs
+C:\Alena\School helper\School helper\obj\Release\netcoreapp2.0\win-x64\School helper.dll
+C:\Alena\School helper\School helper\obj\Release\netcoreapp2.0\win-x64\School helper.pdb

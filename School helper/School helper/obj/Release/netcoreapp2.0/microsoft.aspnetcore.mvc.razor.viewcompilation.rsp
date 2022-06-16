@@ -1,0 +1,12 @@
+C:\Alena\School helper\School helper
+--output-path=obj\Release\netcoreapp2.0\
+--application-name=School helper
+--content-root=C:\Alena\School helper\School helper
+--file=C:\Alena\School helper\School helper\Views\Home\About.cshtml
+--file=C:\Alena\School helper\School helper\Views\Home\Contact.cshtml
+--file=C:\Alena\School helper\School helper\Views\Home\Index.cshtml
+--file=C:\Alena\School helper\School helper\Views\Shared\Error.cshtml
+--file=C:\Alena\School helper\School helper\Views\Shared\_Layout.cshtml
+--file=C:\Alena\School helper\School helper\Views\Shared\_ValidationScriptsPartial.cshtml
+--file=C:\Alena\School helper\School helper\Views\_ViewImports.cshtml
+--file=C:\Alena\School helper\School helper\Views\_ViewStart.cshtml
