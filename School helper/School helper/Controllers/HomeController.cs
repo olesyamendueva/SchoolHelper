@@ -31,6 +31,7 @@ namespace School_helper.Controllers
             return View();
         }
 
+
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
@@ -257,5 +258,13 @@ namespace School_helper.Controllers
             }
             else return false;
         }
+
+
+
+        #region Методы работы с БД
+
+        // Это коммент
+
+        #endregion
     }
 }
