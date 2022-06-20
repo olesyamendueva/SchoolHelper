@@ -20,5 +20,20 @@ namespace School_helper.Controllers
 
             return View();
         }
+
+        /// <summary>
+        /// Метод для сохранения результатов
+        /// </summary>
+        [HttpPost]
+        public JsonResult Save([FromBody] SurveyModel model)
+        {
+            string fio = model.Fio.Trim();
+            string age = model.Age.Trim();
+            string hero = model.Hero.Trim();
+            string source = model.Source.Trim();
+
+            return Json(new { res = "Данные сохранены. Спасибо за участие!\n" + "Fio=" + fio + "\n" + "Age=" + age + "\n" + "Hero=" + hero + "\n" + "Source=" + source });
+
+        }
     }
 }

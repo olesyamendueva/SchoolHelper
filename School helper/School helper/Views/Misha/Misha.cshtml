@@ -1,4 +1,82 @@
-﻿@{
+﻿@section Scripts{
+
+	<script type="text/javascript">
+
+
+		function errorCheck(data, status, jqXHR) {
+			if (jqXHR.getResponseHeader('content-type').indexOf('text/html') >= 0) {
+				var error = $(data).find('#errorLabel').text();
+				if (error !== undefined && error !== "") {
+					window.location.href = '/Default/Home/Error?EventCode=' + error;
+				}
+			}
+		}
+
+
+		var ajaxPost = function (query, dataUrl, fnBeforeSend) {
+			return $.ajax({
+				url: dataUrl,
+				type: "POST",
+				contentType: "application/json; charset=utf-8",
+				data: query,
+				success: errorCheck,
+				beforeSend: fnBeforeSend
+			});
+		}
+
+
+		$(document).ready(function () {
+
+			$('#btn_save_form').on('click', function () {
+
+				var json = getModelJsonStringify();
+                $.when(ajaxPost(json, "@Url.Action("Save", "Misha", new { area = "" })")).then(function (data) {
+						alert(data.res);
+                });
+
+			});
+
+
+			function getModelJsonStringify() {
+				var arr = {};
+
+				var fio = $('#fio_input').val();
+				arr.Fio = fio;
+
+				var age = $('#age_input').val();
+				arr.Age = age;
+
+				var e = document.getElementById("hero_select");
+				var hero = e.options[e.selectedIndex].value;
+				arr.Hero = hero;
+
+				var source = "";
+				const sources = document.querySelectorAll('input[name="source"]')
+				for (const s of sources) {
+					if (s.checked) {
+						source = s.value;
+					}
+				}
+				arr.Source = source;
+
+
+				return JSON.stringify(arr);
+			}
+
+
+
+
+
+		});
+
+	</script>
+}
+
+
+
+
+
+@{
 	ViewData["Title"] = "О Мише";
 }
 <h2>@ViewData["Title"]</h2>
@@ -8,6 +86,50 @@
 	<img src="~/images/photo5299037312031767883.jpg" height="300" width="300" alt="ASP.NET" class="img-responsive" />
 	<strong>Школа Кингс Кидс, 10 класс</strong><br />
 </address>
+
+<hr>
+
+<div style="background-color:lightblue; padding:25px; width:300px;">
+
+	<h3>ФИО</h3>
+	<input id="fio_input" style="width:250px; height:25px" />
+	<br>
+
+	<h3>Возраст</h3>
+	<input id="age_input" style="width:250px; height:25px" />
+	<br>
+
+	<h3>Предпочитаю</h3>
+	<div>
+		<input type="radio" id="sourceChoice1"
+			   name="source" value="book">
+		<label for="sourceChoice1">Книги</label>
+		<br>
+		<input type="radio" id="sourceChoice2"
+			   name="source" value="film">
+		<label for="sourceChoice2">Фильмы</label>
+		<br>
+		<input type="radio" id="sourceChoice3"
+			   name="source" value="mult">
+		<label for="sourceChoice3">Мультики</label>
+	</div>
+
+	<h3>Любимый герой</h3>
+	<select id="hero_select" style="width:250px; height:25px">
+		<option disabled>Выберите героя</option>
+		<option value="Чебурашка">Чебурашка</option>
+		<option value="Крокодил Гена">Крокодил Гена</option>
+		<option value="Шапокляк">Шапокляк</option>
+		<option value="Крыса Лариса">Крыса Лариса</option>
+	</select>
+
+	<br>
+	<br>
+
+	<button id="btn_save_form" type="button" class="k-button btn-success">Отправить ответы</button>
+</div>
+
+<hr>
 
 <address>
 	<strong>Support:</strong> <a href="mailto:Misha47236438745626735@mail.ru">Misha47236438745626735@mail.ru</a><br />
